@@ -1,0 +1,19 @@
+.NavTab{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+
+}
+.tabs{
+    text-decoration: none;
+    margin: 8px 16px;
+}
+.adminBanner{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+.adminBanner img{
+    height: 400px;
+    width: auto;
+}

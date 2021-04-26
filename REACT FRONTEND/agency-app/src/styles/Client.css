@@ -1,0 +1,25 @@
+.clientPageBanner{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    opacity: 80%;
+}
+.ClientDashboard{
+    display: flex;
+    justify-content: center;
+}
+.OrderHistoryClient{
+    float: left;
+}
+.CurrentOrderClient{
+    float: left;
+}
+.ClientButtons{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px ;
+}
+.ClientButtons button{
+    margin-left: 5px;
+    margin-right: 5px;
+}

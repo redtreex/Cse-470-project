@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2354b1f3.chunk.css",
+    "main.js": "/static/js/main.3fa5fb88.chunk.js",
+    "main.js.map": "/static/js/main.3fa5fb88.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a85a8d27.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a85a8d27.js.map",
+    "static/js/2.b4bbb99e.chunk.js": "/static/js/2.b4bbb99e.chunk.js",
+    "static/js/2.b4bbb99e.chunk.js.map": "/static/js/2.b4bbb99e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2354b1f3.chunk.css.map": "/static/css/main.2354b1f3.chunk.css.map",
+    "static/js/2.b4bbb99e.chunk.js.LICENSE.txt": "/static/js/2.b4bbb99e.chunk.js.LICENSE.txt",
+    "static/media/Home-banner.4bfb6cb6.png": "/static/media/Home-banner.4bfb6cb6.png",
+    "static/media/adminPage.efb36b69.jpg": "/static/media/adminPage.efb36b69.jpg",
+    "static/media/clientPageBanner.6f9fc8b5.jpg": "/static/media/clientPageBanner.6f9fc8b5.jpg",
+    "static/media/login-page-banner.83fc5da4.png": "/static/media/login-page-banner.83fc5da4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a85a8d27.js",
+    "static/js/2.b4bbb99e.chunk.js",
+    "static/css/main.2354b1f3.chunk.css",
+    "static/js/main.3fa5fb88.chunk.js"
+  ]
+}

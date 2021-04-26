@@ -1,0 +1,13 @@
+.Login-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+.input-div{
+  width: 10%;
+}
+.loginBanner{
+    margin-top: 50px;
+}

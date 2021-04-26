@@ -1,0 +1,32 @@
+.container{
+    background-color: rgb(247, 247, 247);
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+.sign-in-button-class{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+.banner-class{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+.log-in{
+    margin-right: 10px;
+}
+.sign-up{
+    margin-right:50px;
+}
+.header-text{
+    font-family: Georgia;
+}
+.logOut{
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}

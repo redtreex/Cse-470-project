@@ -1,0 +1,10 @@
+.sign-up-input-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-no-input::-webkit-inner-spin-button,.contact-no-input::-webkit-outer-spin-button,.contact-no-input{
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
