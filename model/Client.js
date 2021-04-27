@@ -33,3 +33,5 @@ class Client extends Person {
 
     };
 }
+
+module.exports = Client;
