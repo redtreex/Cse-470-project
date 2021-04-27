@@ -1,5 +1,5 @@
 class Person {
-    constructor(fn, ln, m, a, nid, bd, cn) {
+    constructor(fn, ln, m, a, nid, bd, cn, pass) {
         this.FirstName = fn
         this.LastName = ln
         this.Mail = m
@@ -7,6 +7,7 @@ class Person {
         this.NID = nid
         this.BirthDate = bd
         this.ContactNo = cn
+        this.Password = pass
     }
 }
 module.exports = Person;

@@ -1,94 +1,23 @@
 const Admin = require("../model/Admin");
+const Developer = require("../model/Developer");
+const TeamLead = require("../model/TeamLead");
+
 const { MongoClient } = require("mongodb");
 
-const adminObject = new Admin("FirstName", "lastName", "mail", "Dhaka", "NID", "25/12/1998", "017239232312", "ad001", 0);
+let MEE = new Admin("Sakibur", "Rahman", "sakib86@gmail.com", "Dhaka", "NID", "25/12/1998", "01923921231","AD1234", "redmin");
 
 const url = "mongodb://127.0.0.1:27017/";
 
 
 MongoClient.connect(url, (error, db) => {
-    if (error) throw error;
-    let Iid = 'ObjectId("6086ea7b3d3a732abca4e73e")';
-    
-    let dbo = db.db("It_man");
+  if (error) throw error;
 
-    dbo.collection("abc").deleteOne({_id : Iid}, function(err, obj) {
-        if (err) throw err;
-        console.log("1 document deleted");
-        db.close();
-      });
+  let dbo = db.db("Red_IT");
+
+  dbo.collection("admin").insertOne(MEE,(err,result)=>{
+    if(err)throw err;
+    console.log(result);
+    db.close();
+  });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// async function main() {
-//     const client = new MongoClient(uri);
-
-//     try {
-//         // Connect to the MongoDB cluster
-//         await client.connect();
-
-//         // Make the appropriate DB calls
-//         await listDatabases(client);
-
-//         client.connect
-
-
-//     } catch (e) {
-//         console.error(e);
-//     } finally {
-//         await client.close();
-//     }
-// }
-
-// async function listDatabases(client){
-//     databasesList = await client.db().admin().listDatabases();
-
-//     console.log("Databases:");
-//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-// };
-
-// main().catch(console.error);

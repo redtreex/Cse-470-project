@@ -6,8 +6,7 @@ function clientHistory(req, res) {
         { orderId: "ord004", typeOfOrder: "Android App", status: "Delivered" },
         { orderId: "ord005", typeOfOrder: "Android App", status: "Delivered" },
     ]
-
-
+    
     res.json(history);
 }
 

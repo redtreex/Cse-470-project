@@ -1,0 +1,38 @@
+---------------------------------------------------------Employers Data-------------------------------------------
+
+let maruf = new Developer("Maruf", "Rahman", "maruf69@gmail.com", "Chittagong", "NID", "12/7/1999", "017239232312","Android Developer","27/4/2021","1234","E2104001","Bodda Ahmed");
+let mahfuz = new Developer("Mahfuz", "Rahman", "mahfuz69420@gmail.com", "Dhaka", "NID", "16/8/2000", "015239232312","QA Tester","21/4/2021","5678","E2104002","Bodda Ahmed");
+let anindo = new Developer("Anindo", "Tanvir", "anindo50@gmail.com", "Dhaka", "NID", "24/9/1998", "018239232312","Web Developer","27/4/2020","91011","E2004001","Bodda Ahmed");
+
+let employersArray = [maruf,mahfuz,anindo];
+
+//INSERTING MANY EMPLOYERS 
+  // dbo.collection("employers").insertMany(employersArray,(err,result)=>{
+  //   if(err) throw err;
+  //   console.log(result)
+  //   db.close()
+  // })
+
+------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------TEAM LEADER----------------------------------------------
+let tanjid= new TeamLead("Bodda", "Ahmed", "bodda440@gmail.com", "Nator", "NID", "12/10/1996", "019239232312","Data Analyst","28/4/2021","TL1234","E2104003",5);
+
+  // INSERTING ONE TEAMLEAD 
+  // dbo.collection("employers").insertOne(tanjid, (err, result) => {
+  //   if (err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+
+  // UPDATING MANY EMPLOYERS 
+  //let query = { TeamLead: null };
+  // let newValues = {$set: {TeamLead : "Bodda Ahmed"}}
+  // dbo.collection("employers").updateMany(query,newValues,function (err, result) {
+  //   if (err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------ADMIN -------------------------------------------------------

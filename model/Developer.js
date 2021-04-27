@@ -1,10 +1,10 @@
 const Employer = require("./Employer")
 
-class Developer {
-    constructor(fn, ln, m, a, nid, bd, cn, r, ms, eid, tl, Dc, ar) {
-        super(fn, ln, m, a, nid, bd, cn, r, ms, eid);
+class Developer extends Employer {
+    constructor(fn, ln, m, a, nid, bd, cn, r, ms, pass, eid, tl) {
+        super(fn, ln, m, a, nid, bd, cn, r, ms, pass, eid);
         this.TeamLead = tl
-        this.DeveloperCategory = Dc
-        this.AssignedRole = ar
+        this.level=2;
     }
 }
+module.exports = Developer;
