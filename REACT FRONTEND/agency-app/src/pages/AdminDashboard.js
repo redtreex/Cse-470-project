@@ -16,7 +16,7 @@ export default function AdminDashboard() {
                 .then(data => data.json())
                 .then(orders => setOrderHistory(orders));
     }
-
+    console.log(orderHistory);
     return (
         <div>
             <div className="NavTab">
@@ -36,7 +36,7 @@ export default function AdminDashboard() {
                 <button onClick={FetchHistory}>Check History</button>
                 <ul>
                     {
-                        orderHistory.map(order => <OrderLister key={order.orderId} orderId={order.orderId} typeOfOrder={order.typeOfOrder} status={order.status} />)
+                        orderHistory.map(order => <OrderLister key={order.orderId} orderId={order.orderId} typeOfOrder={order.typeOfOrder} status={order.OrderStatus} />)
                     }
                 </ul>
             </div>
@@ -48,9 +48,8 @@ function OrderLister(props) {
     return (
         <li>
             <p>Order ID: {props.orderId}</p>
-            <p>Type Of Order: {props.typeOfOrder}</p>
-            <p>Status: {props.status}</p>
-            <button>View Details</button>
+            <p>Type Of Order: {props.typeOfOrder ==0 ?"Mobile Application": props.typeOfOrder == 1?"Web Application":props.typeOfOrder==2?"Desktop Application":"Full System"}</p>
+            <p>Status: {props.status == 0 ? "Delivered":"Under Developement"}</p>
         </li>
     )
 }

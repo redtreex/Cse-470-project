@@ -1,27 +1,68 @@
-function finance (req,res){
+
+const { MongoClient } = require("mongodb");
+
+function finance(req, res) {
 
     let response = {
-        employerList:[
-            {E_ID:"e001",Name: "Sakibor rahman", Role:"Android Developer",MemberSince:"25/12/2015"},
-            {E_ID:"e002",Name: "Sakiborr rahman", Role:"Android Developerr",MemberSince:"25/12/2015"},
-            {E_ID:"e003",Name: "Sakiborrr rahman", Role:"Android Developerrr",MemberSince:"25/12/2015"},
-            {E_ID:"e004",Name: "Sakiborrrr rahman", Role:"Android Developerrrr",MemberSince:"25/12/2015"},
-            {E_ID:"e005",Name: "Sakiborrrrr rahman", Role:"Android Developerrrrr",MemberSince:"25/12/2015"},
-        ],
-        orderList:[{ orderId: "ord001", due: 0, typeOfOrder: "Android App" },
-        { orderId: "ord002", due: 0, typeOfOrder: "Android App" },
-        { orderId: "ord003", due: 600, typeOfOrder: "Android App" },
-        { orderId: "ord004", due: 0, typeOfOrder: "Android App" },
-        { orderId: "ord005", due: 0, typeOfOrder: "Android App" },
-        ],
-        status:[{
-            totalBalance: 500000,
-            ordersOnQueue: 5,
-            monthlyExpense: 10000
-        }]
+        employerList: [],
+        orderList: [],
+        status: []
     }
 
-    res.json(response);
+
+    const empValue = (employers) => {
+        for (let i = 0; i < employers.length; i++) {
+            employers[i].Name = employers[i].FirstName + " " + employers[i].LastName
+            delete employers[i].FirstName;
+            delete employers[i].LastName;
+            delete employers[i]._id;
+        }
+        response.employerList = employers;
+    }
+
+    const ordValue = (orders) => {
+        response.orderList = orders;
+    }
+
+    const setStatus = (balance) => {
+
+        let queued = response.orderList.length
+        let expense = 0;
+        response.employerList.forEach(element => {
+            expense = expense + element.salary
+        });
+        let b = balance[0].totalBalance;
+
+        let status = { totalBalance: b, ordersOnQueue: queued, monthlyExpense: expense };
+        response.status[0] = status;
+        console.log(response)
+    }
+
+
+    const url = "mongodb://127.0.0.1:27017/";
+    MongoClient.connect(url, async (error, db) => {
+        if (error) throw error;
+        let dbo = db.db("Red_IT");
+        let e_result = await dbo.collection("employers").find({}, { projection: { E_ID: 1, FirstName: 1, LastName: 1, Role: 1, MemberSince: 1, salary: 1 } })
+            .toArray()
+
+        let o_result = await dbo.collection("queuedOrders").find({}, { projection: { _id: 0, orderId: 1, due: 1, typeOfOrder: 1 } })
+            .toArray()
+
+        let balance = await dbo.collection("status").find({}, { projection: { _id: 0, totalBalance: 1 } }).toArray()
+
+        empValue(e_result);
+        ordValue(o_result);
+        setStatus(balance);
+
+        // console.log(response.status[0]);
+
+        db.close();
+        res.json(response);
+    });
+
+
+
 }
 
 module.exports = finance;

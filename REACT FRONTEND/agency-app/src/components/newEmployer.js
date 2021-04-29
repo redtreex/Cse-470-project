@@ -64,6 +64,12 @@ export default function newEmployer() {
             </div>
 
             <div>
+            <label>Salary: </label>
+            <input type="text"/>
+            <br/><br/>
+            </div>
+
+            <div>
                 <button>Add</button>
             </div>
         </div>

@@ -30,7 +30,7 @@ export default function Client() {
 
             <div className="ClientButtons">
                 <Link className="tabs" to="/clientDashboard/newOrder">Place New Order</Link>
-                <button>Contact Team Leader</button>
+                <button>Contact</button>
                 <Link className="tabs" to="/clientDashboard/orderRevision">Order Revision</Link>
             </div>
 
@@ -39,7 +39,7 @@ export default function Client() {
                     <h3>Current Orders</h3>
                     <ul>
                         {
-                            ordersQueue.map(orders => (<OrderQueue key={orders.orderId} orderId={orders.orderId} Due={orders.Due} typeOfOrder={orders.typeOfOrder} />))
+                            ordersQueue.map(orders => (<OrderQueue key={orders.orderId} orderId={orders.orderId} Due={orders.due} typeOfOrder={orders.typeOfOrder} status={orders.OrderStatus} />))
                         }
                     </ul>
                 </div>
@@ -48,7 +48,7 @@ export default function Client() {
                     <h3>Previous Orders</h3>
                     <ul>
                         {
-                            orderHistory.map(order => <OrderLister key={order.orderId} orderId={order.orderId} typeOfOrder={order.typeOfOrder} status={order.status} />)
+                            orderHistory.map(order => <OrderLister key={order.orderId} orderId={order.orderId} typeOfOrder={order.typeOfOrder} status={order.OrderStatus} />)
                         }
                     </ul>
                 </div>
@@ -64,9 +64,8 @@ function OrderLister(props) {
     return (
         <li>
             <p>Order ID: {props.orderId}</p>
-            <p>Type Of Order: {props.typeOfOrder}</p>
-            <p>Status: {props.status}</p>
-            <button>View Details</button>
+            <p>Type Of Order: {props.typeOfOrder ==0 ?"Mobile Application": props.typeOfOrder == 1?"Web Application":props.typeOfOrder==2?"Desktop Application":"Full System"}</p>
+            <p>Status: {props.status==0?"Delivered":"Under Developement"}</p>
         </li>
     )
 }
@@ -76,8 +75,8 @@ function OrderQueue(props) {
         <li>
             <p>Order ID: {props.orderId}</p>
             <p>Payment : {props.Due === 0 ? "Paid" : "Due " + props.Due + " BDT"}</p>
-            <p>Type Of Order: {props.typeOfOrder}</p>
-            <button>View Details</button>
+            <p>Type Of Order: {props.typeOfOrder ==0 ?"Mobile Application": props.typeOfOrder == 1?"Web Application":props.typeOfOrder==2?"Desktop Application":"Full System"}</p>
+            <p>Status: {props.status==0?"Delivered":"Under Developement"}</p>
         </li>
     )
 }

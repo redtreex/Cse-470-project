@@ -1,13 +1,20 @@
-function clientHistory(req, res) {
-    let history = [
-        { orderId: "ord001", typeOfOrder: "Android App", status: "Delivered" },
-        { orderId: "ord002", typeOfOrder: "Nut Nut App", status: "Delivered" },
-        { orderId: "ord003", typeOfOrder: "Coco choccy App", status: "Delivered" },
-        { orderId: "ord004", typeOfOrder: "Android App", status: "Delivered" },
-        { orderId: "ord005", typeOfOrder: "Android App", status: "Delivered" },
-    ]
-    
-    res.json(history);
-}
+const { MongoClient } = require("mongodb");
 
+function clientHistory(req, res) {
+
+    client = { OrderedBy: "anwar65" };
+    
+    const url = "mongodb://127.0.0.1:27017/";
+    MongoClient.connect(url, async (err, db) => {
+        if (err) throw err;
+        let dbo = db.db("Red_IT");
+        let queued = await dbo.collection("queuedOrders").find(client, { projection: { _id: 0, orderId: 1, OrderStatus:1, typeOfOrder: 1 } })
+            .toArray();        
+        let delivered = await dbo.collection("deliveredOrders").find(client, { projection: { _id: 0, orderId: 1, OrderStatus:1, typeOfOrder: 1 } })
+             .toArray();       
+        queued = queued.concat(delivered);      
+        res.json(queued);
+        db.close();
+    });
+}
 module.exports = clientHistory;

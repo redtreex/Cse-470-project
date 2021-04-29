@@ -50,7 +50,7 @@ function OrderLister(props){
     return(
         <li> 
             <p>Order ID: {props.orderId}</p>
-            <p>Type Of Order: {props.typeOfOrder}</p>
+            <p>Type Of Order: {props.typeOfOrder ==0 ?"Mobile Application": props.typeOfOrder == 1?"Web Application":props.typeOfOrder==2?"Desktop Application":"Full System"}</p>
             <p>Payment Status: {props.due == 0 ? "Paid":`Due ${props.due} Bdt`}</p>
         </li>
     )
