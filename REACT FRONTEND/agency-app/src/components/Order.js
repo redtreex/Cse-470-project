@@ -12,7 +12,7 @@ export default function Order() {
     
     return (    
         <div>
-            Order pageeee
+            <h1>Queued Orders</h1>
             
             <ul>
               {

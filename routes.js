@@ -6,6 +6,7 @@ const clientHistory= require("./controller/clientHistory")
 const employerList = require("./controller/employerList");
 const finance = require("./controller/finance");
 const groupMessage = require("./controller/GroupMessage")
+const devCurrentOrder = require("./controller/devCurrentOrder");
 const router = express.Router()
 
 router.get("/orderList",orderList)
@@ -15,5 +16,6 @@ router.get("/orderListHistory",orderListHistory);
 router.get("/orderQueue",orderQueue);
 router.get("/clientHistory",clientHistory);
 router.get("/groupChat",groupMessage);
+router.get("/devCurrentOrder",devCurrentOrder);
 
 module.exports = router; 

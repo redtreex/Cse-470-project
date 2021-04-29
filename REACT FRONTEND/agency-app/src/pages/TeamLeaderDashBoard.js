@@ -2,41 +2,31 @@ import React, { useEffect, useState } from 'react'
 
 export default function TeamLeader() {
 
-    const [currentOrder, setcurrentOrder] = useState({
-        orderId: "ord001",
-        billStatus: true,
-        typeOfOrder: "Android App for School",
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-        mollit anim id est laborum.`,
-        deliveryDate: "12/6/2021"
-    });
+    const [currentOrder, setcurrentOrder] = useState([]);
 
     const [memberMessages, setmemberMessages] = useState([])
 
     useEffect(() => {
         fetch("http://localhost:3030/api/groupChat")
-        .then(data => data.json())
-        .then(messages => setmemberMessages(messages))
+            .then(data => data.json())
+            .then(messages => setmemberMessages(messages))
     }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:3030/api/devCurrentOrder")
+            .then(data => data.json())
+            .then(order => setcurrentOrder(order))
+    }, [])
+
     return (
         <div>
             <div>
-                <h2>--Current Order--</h2>
-                <h4>Order Title: {currentOrder.typeOfOrder}</h4>
-                <h5>Order ID: {currentOrder.orderId} <br /> Order Bill Status: {currentOrder.billStatus ? "Paid" : "Due"}</h5>
-                <p><span>Description: </span>{currentOrder.description}</p>
-                <h4>Delivery Date: {currentOrder.deliveryDate}</h4>
+                <h2>Current Order</h2>
+                <h4>Order Type: {currentOrder.typeOfOrder == 0 ? "Mobile Application" : currentOrder.typeOfOrder == 1 ? "Web Application" : currentOrder.typeOfOrder == 2 ? "Desktop Application" : "Full System"}</h4>
+                <h5>Order ID: {currentOrder.orderId} <br /> Order Bill Status: {currentOrder.due == 0 ? "Paid" : "Due" + currentOrder.due}</h5>
+                <p><span>Description: </span>{currentOrder.desc}</p>
+                <h4>Delivery Date: {currentOrder.DeliveryDate}</h4>
             </div>
-
-            <div>
-                <h2>Messages from client DIV</h2>
-            </div>
-
 
             <div>
 
@@ -50,16 +40,15 @@ export default function TeamLeader() {
                 </div>
 
                 <div>
-                    <input type="text"/>
+                    <input type="text" />
                     <button>Send</button>
                 </div>
 
             </div>
-           <br/>
+            <br />
             <div>
                 <button>Drop Project</button>
-                <button>Deliver Project</button>
-                <button>Contact Client</button>
+                <button>Deliver To Admin</button>
             </div>
 
         </div>
