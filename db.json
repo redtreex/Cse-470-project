@@ -1,7 +1,7 @@
 {
     "users": [
         {
-            "firstName": "sakib",
+            "firstName": "client",
             "lastName": "reagad",
             "address": "qweqw1213",
             "nid": "1231412412412",
@@ -14,7 +14,7 @@
             "level": 3
         },
         {
-            "firstName": "sakib",
+            "firstName": "developer",
             "lastName": "reagad",
             "address": "qweqw1213",
             "nid": "1231412412412",
@@ -38,6 +38,19 @@
             "userName": "ACVS",
             "id": 9,
             "level": 0
+        },
+        {
+            "firstName": "Leader",
+            "lastName": "reagad",
+            "address": "qweqw1213",
+            "nid": "1231412412412",
+            "birthDate": "2021-04-07",
+            "contact": "12314124",
+            "email": "lead@gmail.com",
+            "password": "1234",
+            "userName": "ACVS",
+            "id": 9,
+            "level": 1
         }
     ]    
 }

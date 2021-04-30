@@ -6,6 +6,7 @@ export const UserContext = React.createContext()
 
 export default function App() {
     const [user, setUser] = useState();
+    const [history,setHistory] = useState();
     function logIn(email, password, history) {
         
         fetch("http://localhost:4000/users?email=" + email + "&password=" + password)
@@ -13,6 +14,7 @@ export default function App() {
                 console.log(data);
                 if (data.length) {
                     setUser(data[0]);
+                    setHistory(history);
                     switch (data[0].level) {
                         case 0:
                             history.push("/adminDashboard")
@@ -35,11 +37,16 @@ export default function App() {
                 }
             });
     }
+
+    function logOut(){
+        setUser([]);
+        history.push("/login")
+    }
     return (
         <div>
             <UserContext.Provider value={{ user, logIn }}>
 
-                <Header name={user?user.firstName:false} />
+                <Header name={user?user.firstName:false} logOut={logOut}/>
                 <Rooter />
 
             </UserContext.Provider>
