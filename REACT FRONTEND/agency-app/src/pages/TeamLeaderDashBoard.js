@@ -22,8 +22,8 @@ export default function TeamLeader() {
         <div>
             <div>
                 <h2>Current Order</h2>
-                <h4>Order Type: {currentOrder.typeOfOrder == 0 ? "Mobile Application" : currentOrder.typeOfOrder == 1 ? "Web Application" : currentOrder.typeOfOrder == 2 ? "Desktop Application" : "Full System"}</h4>
-                <h5>Order ID: {currentOrder.orderId} <br /> Order Bill Status: {currentOrder.due == 0 ? "Paid" : "Due" + currentOrder.due}</h5>
+                <h4>Order Type: {currentOrder.typeOfOrder === 0 ? "Mobile Application" : currentOrder.typeOfOrder === 1 ? "Web Application" : currentOrder.typeOfOrder === 2 ? "Desktop Application" : "Full System"}</h4>
+                <h5>Order ID: {currentOrder.orderId} <br /> Order Bill Status: {currentOrder.due === 0 ? "Paid" : "Due" + currentOrder.due}</h5>
                 <p><span>Description: </span>{currentOrder.desc}</p>
                 <h4>Delivery Date: {currentOrder.DeliveryDate}</h4>
             </div>

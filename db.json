@@ -1,0 +1,43 @@
+{
+    "users": [
+        {
+            "firstName": "sakib",
+            "lastName": "reagad",
+            "address": "qweqw1213",
+            "nid": "1231412412412",
+            "birthDate": "2021-04-07",
+            "contact": "12314124",
+            "email": "client@gmail.com",
+            "password": "1234",
+            "userName": "ACVS",
+            "id": 9,
+            "level": 3
+        },
+        {
+            "firstName": "sakib",
+            "lastName": "reagad",
+            "address": "qweqw1213",
+            "nid": "1231412412412",
+            "birthDate": "2021-04-07",
+            "contact": "12314124",
+            "email": "dev@gmail.com",
+            "password": "1234",
+            "userName": "ACVS",
+            "id": 9,
+            "level": 2
+        },
+        {
+            "firstName": "admin",
+            "lastName": "reagad",
+            "address": "qweqw1213",
+            "nid": "1231412412412",
+            "birthDate": "2021-04-07",
+            "contact": "12314124",
+            "email": "admin@gmail.com",
+            "password": "1234",
+            "userName": "ACVS",
+            "id": 9,
+            "level": 0
+        }
+    ]    
+}
