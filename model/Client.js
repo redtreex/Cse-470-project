@@ -37,7 +37,7 @@ class Client extends Person {
             d.toArray((err, result) => {
                 if (err) throw err;
                 if (result.length === 1) {
-                    return "Delivered";
+                    return "Order Delivered";
                 }
             });
             db.close();
