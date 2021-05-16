@@ -1,5 +1,5 @@
 class Order {
-    constructor(oid, d, od = new Date, dd, ob, pm, os, toO) {
+    constructor(oid, d, od = new Date, dd, ob, pm, os, toO,desc) {
         this.OrderId = oid
         this.DateOfOrder = od 
         this.due = d
@@ -8,6 +8,7 @@ class Order {
         this.ProjectManager = pm
         this.OrderStatus = os
         this.typeOfOrder = toO
+        this.desc = desc
     }
     calculatePrice() {
         switch (toO) {

@@ -5,18 +5,24 @@ const Clients = require("../model/Client");
 const Order = require("../model/Order")
 const { MongoClient } = require("mongodb");
 
-const url = "mongodb://127.0.0.1:27017/Red_IT";
+const url = "mongodb://127.0.0.1:27017";
+let orderId = "ord789"
+let rev = "Do this and do that and that too!"
 
-console.log(orders);
-
-MongoClient.connect(url, (error, db) => {
- 
-  if (error) throw error;
-  db.collections("employers").find({},{projection:{_id:1 , FirstName:1}}).toArray((err,result)=>{
-    if (err) throw err;
-    console.log(result);
+const ff = () => {
+  let nut = "nutted";
+  MongoClient.connect(url, async (error, db) => {
+    let dbo = db.db("Red_IT");
+    if (error) throw error;
+    let query = { orderId: orderId };
+    let project_manager = await dbo.collection("queuedOrders").find(query, { projection: { _id: 0, ProjectManager: 1 } })
+    project_manager.toArray((err,result)=>{
+     if (err) throw err;
+     nut = result[0].ProjectManager;
+     return nut;
+    });   
     db.close();
   });
+}
 
-});
-
+console.log(ff())
