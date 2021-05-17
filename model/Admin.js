@@ -1,6 +1,8 @@
 const { MongoClient } = require("mongodb");
 const Person = require("./Person")
 const url = "mongodb://127.0.0.1:27017/";
+const Event = require('events');
+const emmitter = new Event();
 
 class Admin extends Person {
     constructor(fn, ln, m, a, nid, bd, cn, pass, aid) {
@@ -19,7 +21,8 @@ class Admin extends Person {
             dbo.collection("queuedOrders").insertOne(order, (err, result) => {
                 if (err) throw err
                 db.close();
-                return result.insertedId;
+                emmitter.emit("orderConfirm", result.insertedId == null?"confirmError":"confirmed");
+                //return result.insertedId;
             });
         });
     };
@@ -31,7 +34,8 @@ class Admin extends Person {
             dbo.collection("queuedOrders").deleteOne({ orderId: orderId }, (err, result) => {
                 if (err) throw err;
                 db.close();
-                return result.deletedCount;
+                emmitter.emit("orderCancel",result.deletedCount==1?"deleted":"not found");
+               // return result.deletedCount;
             });
         });
     };
@@ -46,7 +50,8 @@ class Admin extends Person {
             order.OrderStatus = 0;
             await dbo.collection("deliveredOrders").insertOne(order, (err, result) => {
                 if (err) throw err;
-                return result.insertedId;
+                emmitter.emit("orderDelivered", result.insertedId == null?"deliveryError":"delivered");
+               // return result.insertedId;
             });
             db.close();
         });
@@ -59,7 +64,8 @@ class Admin extends Person {
             let query = { orderId: orderId };
             dbo.collection("queuedOrders").find(query, { projection: { _id: 0, due: 1 } }).toArray((err, result) => {
                 if (err) throw err
-                return result[0].due
+                emmitter.emit("dueAmount",result[0].due);
+               // return result[0].due
             });
             db.close();
         });
@@ -72,7 +78,8 @@ class Admin extends Person {
             dbo.collection("employers").insertOne(employeeObject, (err, result) => {
                 if (err) throw err
                 db.close();
-                return result.insertedId;
+                emmitter.emit("addEmployee", result.insertedId == null?"employeeError":"employeeAdded");
+                //return result.insertedId;
             });
         });
     };
@@ -84,7 +91,8 @@ class Admin extends Person {
             dbo.collection("employers").deleteOne({ orderId: E_ID }, (err, result) => {
                 if (err) throw err;
                 db.close();
-                return result.deletedCount;
+                emmitter.emit("removeEmployee",result.deletedCount==1?"removed":"not found");
+               // return result.deletedCount;
             });
         });
     };
@@ -97,10 +105,11 @@ class Admin extends Person {
             dbo.collection("employers").updateOne(query, setObject, (err, result) => {
                 if (err) throw err;
                 db.close();
-                return result.upsertedId;
+                emmitter.emit("editEmployee", result.upsertedId == null?"updateError":"updated");
+               // return result.upsertedId;
             });
         });
     };
 
 }
-module.exports = Admin;
+module.exports = {Admin,orderConfirm,orderCancel,orderDelivery,checkBilling,addEmployee,remEmployee,editEmployee};
