@@ -9,5 +9,5 @@ test('Employer class test', () => {
     emmitter.on("sendStatus",(result) =>{
           expect(result).toBe(1)
     })
-    sendStatus("E2104003");
+    sendStatus("ord231");
 })

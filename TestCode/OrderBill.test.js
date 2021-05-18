@@ -1,5 +1,5 @@
 const {makePayment} = require("../model/OrderBill");
 
 test('OrderBill', () => {
-    expected(makePayment("ord789")).toBe(1)
+    expect(makePayment("ord789")).toBe(1)
 })

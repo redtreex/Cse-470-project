@@ -6,7 +6,7 @@ test('Testing Client Class', () => {
     })
     placeOrder(
         {
-            "DateOfOrder": { "$date": "2021-04-27T19:11:48.707Z" },
+            "DateOfOrder": { "date": "2021-04-27T19:11:48.707Z" },
             "due": 8000,
             "DeliveryDate": "1/12/2021",
             "OrderedBy": "Towsif",

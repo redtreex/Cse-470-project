@@ -28,7 +28,7 @@ function viewOrder(orderId) {
     });
 }
 
-function sendStatus(E_ID) {
+function sendStatus(orderId) {
     MongoClient.connect(url, (error, db) => {
         let dbo = db.db("Red_IT");
         if (error) throw error;
