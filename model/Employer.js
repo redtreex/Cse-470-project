@@ -1,4 +1,5 @@
 const Person = require("./Person");
+const { MongoClient } = require("mongodb")
 const url = "mongodb://127.0.0.1:27017/";
 const Event = require('events');
 const emmitter = new Event();
@@ -27,9 +28,19 @@ function viewOrder(orderId) {
     });
 }
 
-function sendStatus() {
- 
+function sendStatus(E_ID) {
+    MongoClient.connect(url, (error, db) => {
+        let dbo = db.db("Red_IT");
+        if (error) throw error;
+        let query = { orderId: orderId };
+        dbo.collection("queuedOrders").find(query, { projection: { _id: 0, OrderStatus: 1 } }).toArray((err, result) => {
+            if (err) throw err
+            emmitter.emit("sendStatus", result[0].OrderStatus);
+            return result[0].OrderStatus;
+        });
+        db.close();
+    });
 }
 
 
-module.exports = Employer;
+module.exports = { Employer, emmitter, viewOrder, sendStatus };

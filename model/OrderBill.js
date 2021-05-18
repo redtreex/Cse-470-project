@@ -5,7 +5,9 @@ class OrderBill {
         super(d, a)
         this.OrderId = oid
     }
-    makePayment() {
-          return "Third Party Has confirmed payment"
-    }
 }
+function makePayment(orderId) {
+    return 1;
+}
+
+module.exports = {OrderBill,makePayment}
