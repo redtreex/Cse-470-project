@@ -14,13 +14,14 @@ const ff = (orderId) => {
     let dbo = db.db("Red_IT");
     if (error) throw error;
     let query = { orderId: orderId };
-    dbo.collection("queuedOrders").find(query, { projection: { _id: 0, ProjectManager: 1 } })
-      .toArray((err, result) => {
-        if (err) throw err;
-        let nut = result[0].ProjectManager;
-        emmitter.emit("project-manager-number", nut)
-      });
-    db.close();
+    let setObject = { $set: { due: 0 } }
+    dbo.collection("queuedOrders").updateOne(query, setObject, (err, result) => {
+      if (err) throw err;
+      db.close();
+      emmitter.emit("editEmployee", "updated");
+    });
   });
 }
+
+ff("ord890")
 module.exports = { ff, emmitter };

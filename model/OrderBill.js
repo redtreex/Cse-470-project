@@ -6,6 +6,6 @@ class OrderBill {
         this.OrderId = oid
     }
     makePayment() {
-
+          return "Third Party Has confirmed payment"
     }
 }
