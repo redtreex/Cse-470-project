@@ -1,0 +1,94 @@
+---------------------------------------------------------Employers Data-------------------------------------------
+
+let maruf = new Developer("Maruf", "Rahman", "maruf69@gmail.com", "Chittagong", "NID", "12/7/1999", "017239232312","Android Developer","27/4/2021","1234","E2104001","Bodda Ahmed");
+let mahfuz = new Developer("Mahfuz", "Rahman", "mahfuz69420@gmail.com", "Dhaka", "NID", "16/8/2000", "015239232312","QA Tester","21/4/2021","5678","E2104002","Bodda Ahmed");
+let anindo = new Developer("Anindo", "Tanvir", "anindo50@gmail.com", "Dhaka", "NID", "24/9/1998", "018239232312","Web Developer","27/4/2020","91011","E2004001","Bodda Ahmed");
+
+let employersArray = [maruf,mahfuz,anindo];
+
+//INSERTING MANY EMPLOYERS 
+  // dbo.collection("employers").insertMany(employersArray,(err,result)=>{
+  //   if(err) throw err;
+  //   console.log(result)
+  //   db.close()
+  // })
+
+------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------TEAM LEADER----------------------------------------------
+let tanjid= new TeamLead("Bodda", "Ahmed", "bodda440@gmail.com", "Nator", "NID", "12/10/1996", "019239232312","Data Analyst","28/4/2021","TL1234","E2104003",5);
+
+  // INSERTING ONE TEAMLEAD 
+  // dbo.collection("employers").insertOne(tanjid, (err, result) => {
+  //   if (err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+
+  // UPDATING MANY EMPLOYERS 
+  //let query = { TeamLead: null };
+  // let newValues = {$set: {TeamLead : "Bodda Ahmed"}}
+  // dbo.collection("employers").updateMany(query,newValues,function (err, result) {
+  //   if (err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------ADMIN -------------------------------------------------------
+let MEE = new Admin("Sakibur", "Rahman", "sakib86@gmail.com", "Dhaka", "NID", "25/12/1998", "01923921231","AD1234", "redmin");
+
+ // INSERTING ADMIN  
+  //dbo.collection("admin").insertOne(MEE,(err,result)=>{
+  //   if(err)throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+
+  --------------------------------------------------------------------------------------------------------------------
+
+  ---------------------------------------------------client-----------------------------------------------------------
+  let clients = [
+  new Clients("Almas","Zakia","almas440@gmail.com","yangon","NID","28/9/1980","01837492473","12345","almas443",new Date),
+  new Clients("Anwar","Hossain","anwar78@gmail.com","Savar","NID","28/9/1987","01537234543","45678","anwar67",new Date),
+  new Clients("Rafee","Ahmed","aafeeah@gmail.com","Dhaka","NID","28/9/1990","0193786473","67895","Rafee67",new Date),
+  new Clients("John","Seed","john80@gmail.com","Los Angles","NID","28/9/1988","09678644365","54321","john747",new Date),
+]
+
+ //INSERTING CLIENTSSSSSSSSSSSSS
+ // dbo.collection("clients").insertMany(clients,(err,result)=>{
+  //   if(err) throw err;
+  //   console.log(result);
+  //   db.close();
+  // });
+  ---------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------Queued ORders--------------------------------------------------
+  let orders = [
+  new Order("oid",0,"25/10/2021","anwar65","bodda",1,2),
+  new Order("oid",6000,"22/1/2022","Almas89","bodda",1,3),
+  new Order("oid",0,"1/1/2022","john65","bodda",1,0),
+  new Order("oid",8000,"1/12/2021","Towsif","bodda",1,3),
+]
+
+  //INSERTING QUEUED ORDERSSS
+  // dbo.collection("queuedOrders").insertMany(orders,(err,result)=>{
+  //    if (err) throw err
+  //    console.log(result)
+  //    db.close();
+  // });
+
+  -----------------------------------------------------------------------------------------------------------------------
+
+  ----------------------------------------------Delivered Orders---------------------------------------------------------
+  let orders = [
+  new Order("oid",0,"25/10/2021",new Date,"anwar65","bodda",0,2),
+  new Order("oid",0,"22/1/2022",new Date,"Almas89","bodda",0,3),
+]
+
+  dbo.collection("deliveredOrders").insertMany(orders,(err,result)=>{
+       if (err) throw err
+       console.log(result)
+       db.close();
+    });
+
+----------------------------------------------------------------------------------------------------------------------------
